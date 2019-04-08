@@ -1,23 +1,38 @@
 import React from 'react';
 import styles from '../../dist/styles/app.css';
 import TrackItem from './TrackItem.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faTasks } from '@fortawesome/free-solid-svg-icons'
+
 
 const Track = (props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        Recommended Tracks
+      <div className={`${styles.title} ${styles.titleBottom}`}>
+        RECOMMENDED TRACKS
+        <div className={styles.buttons}>
+          <div className={styles.playButton}>
+            <FontAwesomeIcon icon={faPlay} id={styles.playButton} />
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faTasks} id={styles.queueButton} />            
+          </div>
+        </div>
       </div>
-      <br />
-      <div className={`${styles.row} ${styles.headers}`}>
-        <div className={styles.playcol}></div>
-        <div className={styles.titlecol}>TITLE</div>
-        <div className={styles.artistcol}>ARTISTS</div>
-        <div className={styles.remixercol}>REMIXERS</div>
-        <div className={styles.remixercol}>LABEL</div>
-        <div className={styles.remixercol}>GENRE</div>
-        <div className={styles.remixercol}>RELEASED</div>
+
+      {/* Header information */}
+      <div className={styles.headers}>
+        <div className={styles.playCol}></div>
+        <div className={styles.titleCol}>TITLE</div>
+        <div className={styles.artistCol}>ARTISTS</div>
+        <div className={styles.remixerCol}>REMIXERS</div>
+        <div className={styles.labelCol}>LABEL</div>
+        <div className={styles.genreCol}>GENRE</div>
+        <div className={styles.releasedCol}>RELEASED</div>
+        <div className={styles.priceCol}></div>
       </div>
+
       {props.songList.map((song, index) => <TrackItem song={song} key={index}/>)}
     </div>
   )
